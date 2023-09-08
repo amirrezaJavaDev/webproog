@@ -24,7 +24,7 @@ export default function AppPageLayout(){
                          <button className={`btn reg-btn`}>عضویت</button>
                          <button className={`btn log-btn mr-5`}>ورود</button>
                      </div>
-                     <img src="/images/data-visualization-b.png"/>
+                     <img src="/images/animal-1.png"/>
                  </div>
                </div>
            </section>
