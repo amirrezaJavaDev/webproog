@@ -1,7 +1,9 @@
 'use client'
 import React, {useState} from "react";
 import {log} from "next/dist/server/typescript/utils";
+import useAOS from "@/hook/useAOS";
 export function GalleryComponent() {
+    useAOS()
     const [selected,setItemSelected] = useState(0);
     const api = [
         {
@@ -24,7 +26,10 @@ export function GalleryComponent() {
         return api[selected].images.map((imag)=>(
             <>
                 <div className={`max-w-[400px] max-h-[300px] drop-shadow-xl`}>
-                    <img src={'/images/'+imag} alt={imag.name} className={`rounded-lg w-full h-full`}/>
+                    <img src={'/images/'+imag}
+                         data-aos="zoom-out"
+                         alt={imag.name}
+                         className={`rounded-lg w-full h-full`}/>
                 </div>
             </>
         ))
@@ -35,7 +40,9 @@ export function GalleryComponent() {
                 <ul className={`flex justify-center`}>
                     {
                         api.map((list,index)=>(
-                            <li className={`item ${selected === index?`item-active`:``}`} onClick={()=>setItemSelected(index)}>{list.name}</li>
+                            <li data-aos="fade-down"
+                                data-aos-delay={index+1*400}
+                                className={`item dark:text-white ${selected === index?`item-active`:``}`} onClick={()=>setItemSelected(index)}>{list.name}</li>
                         ))
                     }
                 </ul>
